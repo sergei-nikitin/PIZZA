@@ -1,0 +1,22 @@
+.wrapper {
+  margin-top: 50px;
+  padding: 0 20px;
+}
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 50px;
+}
+.item {
+  width: calc(100% / 4 - 15px);
+  margin-right: 20px;
+}
+.item:nth-child(4) {
+  margin-right: 0;
+}

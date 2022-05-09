@@ -1,0 +1,146 @@
+@import "variables";
+.cartWrapper {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 815px;
+  margin: 0 auto;
+}
+.title,
+.text {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  transition: all 0.3s;
+  img {
+    margin-right: 10px;
+  }
+}
+.text:hover {
+  border-bottom: 1px solid $gray-line;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  @media (max-width: 480px) {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+.text {
+  font-size: 18px;
+  line-height: 26px;
+  color: $grey;
+  @media (max-width: 480px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+.img {
+  width: 300px;
+  height: 255px;
+  margin-top: 40px;
+  @media (max-width: 480px) {
+    width: 280px;
+    height: 235px;
+  }
+}
+.link {
+  display: flex;
+  align-items: center;
+
+  margin-top: 40px;
+  padding: 10px 30px;
+  border-radius: $radius;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #fff;
+  background: $black;
+  transition: all 0.3s;
+  img {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  }
+}
+// not emty
+.upperBlock {
+  width: 100%;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h1,
+  p {
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+}
+
+.list {
+  width: 100%;
+  li {
+    width: 100%;
+  }
+}
+
+.lowerBlock {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.info,
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px;
+  .count,
+  .price {
+    font-size: 22px;
+    line-height: 27px;
+    span {
+      font-weight: 700;
+    }
+  }
+  .spanPrice {
+    color: $orange;
+  }
+
+  .link {
+    margin-top: 0;
+  }
+
+  button {
+    cursor: pointer;
+    background: $orange;
+    color: #fff;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: $radius;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
