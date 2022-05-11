@@ -4,7 +4,7 @@ import shortId from 'shortid';
 import { PizzaCart } from './PizzaCart';
 import s from '../scss/Content.module.scss';
 
-export const Content = () => {
+const Content = () => {
   return (
     <div className={s.wrapper}>
       <h2 className={s.title}>All pizzas</h2>
@@ -26,3 +26,5 @@ export const Content = () => {
     </div>
   );
 };
+
+export default Content;

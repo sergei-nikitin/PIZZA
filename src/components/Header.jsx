@@ -5,7 +5,7 @@ import logo from '../images/logo.svg';
 import cart from '../images/cart.svg';
 import s from '../scss/Header.module.scss';
 
-export const Header = () => {
+const Header = () => {
   return (
     <header className={s.header}>
       <Link to="/" className={s.logoWrapper}>
@@ -25,3 +25,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

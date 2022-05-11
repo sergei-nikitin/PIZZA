@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Filters } from '../components/Filters';
-import { Content } from '../components/Content';
+import { Filters, Content } from '../components';
 
 export const Home = () => {
   return (

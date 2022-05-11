@@ -7,7 +7,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import CallIcon from '@mui/icons-material/Call';
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer>
       {/* className={s.iconsContainer} */}
@@ -36,3 +36,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;

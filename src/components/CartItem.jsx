@@ -6,7 +6,7 @@ import minus from '../images/minus.svg';
 import plus from '../images/plusBig.svg';
 import clear from '../images/clear.svg';
 
-export const CartItem = () => {
+const CartItem = () => {
   return (
     <div className={s.wrapper}>
       <div className={s.descrBlock}>
@@ -34,3 +34,5 @@ export const CartItem = () => {
     </div>
   );
 };
+
+export default CartItem;
