@@ -1,21 +1,40 @@
 .wrapper {
   margin-top: 50px;
   padding: 0 20px;
+  @media (max-width: 769px) {
+    padding: 0 10px;
+  }
 }
 .title {
   font-size: 32px;
   font-weight: 700;
   line-height: 40px;
+  @media (max-width: 769px) {
+    font-size: 22px;
+    line-height: 25px;
+  }
 }
 .list {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   margin-top: 50px;
+  @media (max-width: 769px) {
+    justify-content: center;
+  }
 }
 .item {
   width: calc(100% / 4 - 15px);
   margin-right: 20px;
+  margin-bottom: 25px;
+  @media (max-width: 769px) {
+    width: 40%;
+    margin-right: 20px;
+  }
+  @media (max-width: 480px) {
+    width: 90%;
+    margin-right: 0;
+  }
 }
 .item:nth-child(4) {
   margin-right: 0;

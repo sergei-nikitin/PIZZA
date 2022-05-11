@@ -9,14 +9,12 @@ import { Cart } from './pages/Cart';
 function App() {
   return (
     <BrowserRouter>
-      {/* <div className="wrapper"> */}
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/card" element={<Cart />} />
       </Routes>
       <Footer />
-      {/* </div> */}
     </BrowserRouter>
   );
 }

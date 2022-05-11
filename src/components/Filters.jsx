@@ -1,19 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
+import shortId from 'shortid';
 
 import s from '../scss/Filters.module.scss';
 import arrow from '../images/arrowSortBlack.svg';
 
 export const Filters = () => {
+  const [category, setCategory] = useState(null);
+  const categoryNames = ['Meat', 'Vegetarian', 'Grill', 'Spicy', 'Cloced'];
+
   return (
     <div className={s.wrapper}>
-      <div className={s.btns}>
-        <button className={[s.btn, s.activeBtnFilter].join(' ')}>All</button>
-        <button className={s.btn}>Meat</button>
-        <button className={s.btn}>Vegetarian</button>
-        <button className={s.btn}>Grill</button>
-        <button className={s.btn}>Spicy</button>
-        <button className={s.btn}>Cloced</button>
-      </div>
+      <ul className={s.btns}>
+        <li
+          key={shortId.generate()}
+          onClick={() => setCategory(null)}
+          className={
+            category === null ? [s.btn, s.activeBtnFilter].join(' ') : s.btn
+          }>
+          All
+        </li>
+        {categoryNames &&
+          categoryNames.map((neme, index) => (
+            <li
+              key={shortId.generate()}
+              onClick={() => setCategory(index)}
+              className={
+                category === index
+                  ? [s.btn, s.activeBtnFilter].join(' ')
+                  : s.btn
+              }>
+              {neme}
+            </li>
+          ))}
+      </ul>
       {/* sort popap */}
       <div className={s.sortWrapper}>
         <div className={s.sort}>

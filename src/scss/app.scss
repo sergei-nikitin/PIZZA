@@ -7,7 +7,7 @@ body {
   padding: 50px 0;
 
   @media (max-width: 768px) {
-    padding: 20px 0;
+    padding: 15px 0;
   }
 }
 
@@ -24,8 +24,8 @@ body {
   margin: 0 auto;
   border-radius: 10px;
 
-  @media (max-width: 768px) {
-    width: calc(100% - 40px);
+  @media (max-width: 769px) {
+    width: calc(100% - 20px);
   }
 }
 .wrapper {
