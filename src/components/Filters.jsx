@@ -6,7 +6,13 @@ import SortPopup from './sortPopup/SortPopup';
 
 const Filters = () => {
   const [category, setCategory] = useState(null);
-  const categoryNames = ['Meat', 'Vegetarian', 'Grill', 'Spicy', 'Cloced'];
+  const categoryNames = [
+    'Мясные',
+    'Вегетарианские',
+    'Гриль',
+    'Острые',
+    'Закрытые',
+  ];
 
   return (
     <div className={s.wrapper}>
@@ -17,7 +23,7 @@ const Filters = () => {
           className={
             category === null ? [s.btn, s.activeBtnFilter].join(' ') : s.btn
           }>
-          All
+          Все
         </li>
         {categoryNames &&
           categoryNames.map((neme, index) => (

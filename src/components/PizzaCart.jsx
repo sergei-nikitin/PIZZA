@@ -1,45 +1,94 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import shortId from 'shortid';
 
 import s from '../scss/PizzaCart.module.scss';
-import chizburger from '../images/chizburger.png';
 import plus from '../images/plus.svg';
 import plusOrange from '../images/plusOrange.svg';
 
-export const PizzaCart = () => {
+export const PizzaCart = ({
+  id,
+  imageUrl,
+  name,
+  types,
+  sizes,
+  price,
+  category,
+  rating,
+}) => {
+  // const  = props;
+
+  const availableTypes = ['тонкое', 'традиционное'];
+  const availableSizes = [26, 30, 40];
+
   const [added, setAdded] = useState(true);
+  const [activeType, setActiveType] = useState(types[0]);
+  const [activeSize, setActiveSize] = useState(0);
+
+  const onSelectType = (index) => {
+    setActiveType(index);
+  };
+  const onSelectSize = (index) => {
+    setActiveSize(index);
+  };
+
   return (
-    <div className={s.wrapper}>
-      <img className={s.img} src={chizburger} alt="img" />
-      <p className={s.name}>Chizburger-pizza</p>
+    <div className={s.wrapper} id={id}>
+      <img className={s.img} src={imageUrl} alt="img" />
+      <p className={s.name}>{name}</p>
       <div className={s.filterBlock}>
-        <button
-          type="button"
-          className={[s.btnFilter, s.activeBtnFilter].join(' ')}>
-          thin
-        </button>
-        <button type="button" className={s.btnFilter}>
-          traditional
-        </button>
-        <button
-          type="button"
-          className={[s.btnFilter, s.activeBtnFilter].join(' ')}>
-          26 cm.
-        </button>
-        <button type="button" className={s.btnFilter}>
-          30 cm.
-        </button>
-        <button type="button" className={s.btnFilter}>
-          40cm.
-        </button>
+        <ul className={s.typesList}>
+          {availableTypes.map((item, index) => (
+            <li
+              key={shortId.generate()}
+              onClick={() => onSelectType(index)}
+              className={classNames({
+                activeType: activeType === index,
+                disabledType: !types.includes(index),
+              })}>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <ul className={s.typesList}>
+          {availableSizes.map((size, index) => (
+            <li
+              key={shortId.generate()}
+              onClick={() => onSelectSize(index)}
+              className={classNames({
+                activeType: activeSize === index,
+                disabledType: !sizes.includes(size),
+              })}>
+              {size} см.
+            </li>
+          ))}
+        </ul>
       </div>
       <div className={s.lastBlock}>
-        <p className={s.price}>777 ₴</p>
+        <p className={s.price}>{price} ₴</p>
         <button className={[s.addBtn, s.activeAddBtn].join(' ')} type="button">
           <img className={s.plus} src={added ? plusOrange : plus} alt="plus" />
-          Add
+          Добавить
           <span className={s.count}>3</span>
         </button>
       </div>
     </div>
   );
+};
+
+PizzaCart.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  types: PropTypes.arrayOf(PropTypes.number).isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+PizzaCart.defaultProps = {
+  types: [],
+  sizes: [],
+  name: '___',
+  price: null,
+  imageUrl:
+    'https://previews.123rf.com/images/canbedone/canbedone1812/canbedone181200123/126938162-pizza-slice-cartoon-funny-sunglasses-rock-isolated-on-white.jpg',
 };

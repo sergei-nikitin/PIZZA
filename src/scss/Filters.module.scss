@@ -5,6 +5,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  @media (max-width: 1280px) {
+    align-items: start;
+  }
   @media (max-width: 769px) {
     flex-direction: column;
     align-items: start;
@@ -22,6 +25,7 @@
   border: 0;
   padding: 15px 30px;
   margin-right: 15px;
+  margin-bottom: 15px;
   border-radius: $radius;
   background: $gray-line;
 

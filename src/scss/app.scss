@@ -36,3 +36,13 @@ body {
 .content {
   padding: 40px 0;
 }
+
+.activeType {
+  cursor: pointer;
+  background: #fff;
+}
+
+.disabledType {
+  opacity: 0.5;
+  pointer-events: none;
+}

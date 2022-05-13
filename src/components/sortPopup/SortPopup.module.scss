@@ -2,7 +2,21 @@
 .sortWrapper {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  @media (max-width: 1250px) {
+    width: 33%;
+  }
+  @media (max-width: 1160px) {
+    width: 45%;
+  }
+  @media (max-width: 950px) {
+    width: 100%;
+  }
+  @media (max-width: 769px) {
+    justify-content: start;
+  }
 }
 .sort {
   cursor: pointer;

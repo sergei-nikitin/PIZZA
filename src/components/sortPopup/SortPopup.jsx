@@ -6,7 +6,7 @@ import arrow from '../../images/arrowSortBlack.svg';
 
 const SortPopup = () => {
   const [popup, setPopup] = useState(false);
-  const [category, setCategory] = useState('popularity');
+  const [category, setCategory] = useState('популярности');
   const [activeView, setActiveView] = useState(0);
 
   const popupRef = useRef();
@@ -20,7 +20,7 @@ const SortPopup = () => {
     document.body.addEventListener('click', onclickBody);
   }, []);
 
-  const catigories = ['popularity', 'price', 'alphabetically'];
+  const catigories = ['популярности', 'цене', 'по алфавиту'];
 
   const onCliskCategory = (name, index) => {
     setCategory(name);
@@ -45,7 +45,7 @@ const SortPopup = () => {
           />
         )}
 
-        <p className={s.title}>Sort by:</p>
+        <p className={s.title}>Сортировка по:</p>
         <p className={s.selected}>{category}</p>
       </div>
       {/* popup */}

@@ -4,24 +4,19 @@ import shortId from 'shortid';
 import { PizzaCart } from './PizzaCart';
 import s from '../scss/Content.module.scss';
 
-const Content = () => {
+const Content = ({ items }) => {
   return (
     <div className={s.wrapper}>
-      <h2 className={s.title}>All pizzas</h2>
+      <h2 className={s.title}>Все пиццы</h2>
 
       <ul className={s.list}>
-        <li key={shortId.generate()} className={s.item}>
-          <PizzaCart />
-        </li>
-        <li key={shortId.generate()} className={s.item}>
-          <PizzaCart />
-        </li>
-        <li key={shortId.generate()} className={s.item}>
-          <PizzaCart />
-        </li>
-        <li key={shortId.generate()} className={s.item}>
-          <PizzaCart />
-        </li>
+        {items
+          ? items.map((obj) => (
+              <li key={shortId.generate()} className={s.item}>
+                <PizzaCart {...obj} />
+              </li>
+            ))
+          : console.log('false')}
       </ul>
     </div>
   );
