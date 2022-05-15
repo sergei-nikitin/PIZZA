@@ -1,0 +1,13 @@
+.filtersWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 1280px) {
+    align-items: start;
+  }
+  @media (max-width: 769px) {
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+}

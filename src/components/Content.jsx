@@ -10,13 +10,19 @@ const Content = ({ items }) => {
       <h2 className={s.title}>Все пиццы</h2>
 
       <ul className={s.list}>
-        {items
+        {items &&
+          items.map((obj) => (
+            <li key={shortId.generate()} className={s.item}>
+              <PizzaCart {...obj} />
+            </li>
+          ))}
+        {/* {items
           ? items.map((obj) => (
               <li key={shortId.generate()} className={s.item}>
                 <PizzaCart {...obj} />
               </li>
             ))
-          : console.log('false')}
+          : console.log('false')} */}
       </ul>
     </div>
   );

@@ -2,34 +2,31 @@ import React, { useState } from 'react';
 import shortId from 'shortid';
 
 import s from '../scss/Filters.module.scss';
-import SortPopup from './sortPopup/SortPopup';
 
-const Filters = () => {
+const Filters = React.memo(function Filters({ onClickItem, items }) {
   const [category, setCategory] = useState(null);
-  const categoryNames = [
-    'Мясные',
-    'Вегетарианские',
-    'Гриль',
-    'Острые',
-    'Закрытые',
-  ];
+
+  const onSelectCategory = (index) => {
+    setCategory(index);
+    onClickItem(index);
+  };
 
   return (
     <div className={s.wrapper}>
       <ul className={s.btns}>
         <li
           key={shortId.generate()}
-          onClick={() => setCategory(null)}
+          onClick={() => onSelectCategory(null)}
           className={
             category === null ? [s.btn, s.activeBtnFilter].join(' ') : s.btn
           }>
           Все
         </li>
-        {categoryNames &&
-          categoryNames.map((neme, index) => (
+        {items &&
+          items.map((neme, index) => (
             <li
               key={shortId.generate()}
-              onClick={() => setCategory(index)}
+              onClick={() => onSelectCategory(index)}
               className={
                 category === index
                   ? [s.btn, s.activeBtnFilter].join(' ')
@@ -39,10 +36,8 @@ const Filters = () => {
             </li>
           ))}
       </ul>
-
-      <SortPopup />
     </div>
   );
-};
+});
 
 export default Filters;

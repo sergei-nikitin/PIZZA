@@ -4,7 +4,7 @@ import shortId from 'shortid';
 import s from './SortPopup.module.scss';
 import arrow from '../../images/arrowSortBlack.svg';
 
-const SortPopup = () => {
+const SortPopup = React.memo(function SortPopup({ items }) {
   const [popup, setPopup] = useState(false);
   const [category, setCategory] = useState('популярности');
   const [activeView, setActiveView] = useState(0);
@@ -19,8 +19,6 @@ const SortPopup = () => {
   useEffect(() => {
     document.body.addEventListener('click', onclickBody);
   }, []);
-
-  const catigories = ['популярности', 'цене', 'по алфавиту'];
 
   const onCliskCategory = (name, index) => {
     setCategory(name);
@@ -47,26 +45,26 @@ const SortPopup = () => {
 
         <p className={s.title}>Сортировка по:</p>
         <p className={s.selected}>{category}</p>
+        {/* popup */}
+        {popup && (
+          <ul className={s.popup}>
+            {items.map((obj, index) => (
+              <li
+                key={shortId.generate()}
+                onClick={() => onCliskCategory(obj.name, index)}
+                className={
+                  activeView === index
+                    ? [s.view, s.activeView].join(' ')
+                    : [s.view]
+                }>
+                {obj.name}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      {/* popup */}
-      {popup && (
-        <ul className={s.popup}>
-          {catigories.map((name, index) => (
-            <li
-              key={shortId.generate()}
-              onClick={() => onCliskCategory(name, index)}
-              className={
-                activeView === index
-                  ? [s.view, s.activeView].join(' ')
-                  : [s.view]
-              }>
-              {name}
-            </li>
-          ))}
-        </ul>
-      )}
     </div>
   );
-};
+});
 
 export default SortPopup;

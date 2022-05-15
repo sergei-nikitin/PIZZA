@@ -1,9 +1,10 @@
 @import "../../scss/variables";
+
 .sortWrapper {
-  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
+  margin: 0 20px 0 10px;
 
   @media (max-width: 1250px) {
     width: 33%;
@@ -19,6 +20,7 @@
   }
 }
 .sort {
+  position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -58,10 +60,12 @@
   border-radius: $radius;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  z-index: 100;
+  background: #fff;
 
   @media (max-width: 769px) {
-    right: -95%;
-    bottom: -270%;
+    left: 0;
+    bottom: -400%;
   }
 }
 
