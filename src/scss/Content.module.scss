@@ -24,6 +24,7 @@
   }
 }
 .item {
+  display: flex;
   width: calc(100% / 4 - 15px);
   margin-right: 20px;
   margin-bottom: 25px;
@@ -38,6 +39,9 @@
   @media (max-width: 480px) {
     width: 90%;
     margin-right: 0;
+  }
+  svg {
+    margin: 0 auto;
   }
 }
 

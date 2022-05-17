@@ -4,7 +4,11 @@ import shortId from 'shortid';
 import s from './SortPopup.module.scss';
 import arrow from '../../images/arrowSortBlack.svg';
 
-const SortPopup = React.memo(function SortPopup({ items }) {
+const SortPopup = React.memo(function SortPopup({
+  items,
+  activeSort,
+  onSelectSort,
+}) {
   const [popup, setPopup] = useState(false);
   const [category, setCategory] = useState('популярности');
   const [activeView, setActiveView] = useState(0);
@@ -20,10 +24,11 @@ const SortPopup = React.memo(function SortPopup({ items }) {
     document.body.addEventListener('click', onclickBody);
   }, []);
 
-  const onCliskCategory = (name, index) => {
-    setCategory(name);
+  const onCliskCategory = (name, type, index) => {
     setActiveView(index);
+    setCategory(name);
     tooglePopup();
+    onSelectSort(type);
   };
   const tooglePopup = () => {
     setPopup(!popup);
@@ -51,7 +56,7 @@ const SortPopup = React.memo(function SortPopup({ items }) {
             {items.map((obj, index) => (
               <li
                 key={shortId.generate()}
-                onClick={() => onCliskCategory(obj.name, index)}
+                onClick={() => onCliskCategory(obj.name, obj.type, index)}
                 className={
                   activeView === index
                     ? [s.view, s.activeView].join(' ')

@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import shortId from 'shortid';
 
 import s from '../scss/Filters.module.scss';
 
-const Filters = React.memo(function Filters({ onClickItem, items }) {
-  const [category, setCategory] = useState(null);
-
-  const onSelectCategory = (index) => {
-    setCategory(index);
-    onClickItem(index);
-  };
-
+const Filters = React.memo(function Filters({
+  activeCategory,
+  onClickItem,
+  items,
+}) {
   return (
     <div className={s.wrapper}>
       <ul className={s.btns}>
         <li
           key={shortId.generate()}
-          onClick={() => onSelectCategory(null)}
+          onClick={() => onClickItem(null)}
           className={
-            category === null ? [s.btn, s.activeBtnFilter].join(' ') : s.btn
+            activeCategory === null
+              ? [s.btn, s.activeBtnFilter].join(' ')
+              : s.btn
           }>
           Все
         </li>
@@ -26,9 +26,9 @@ const Filters = React.memo(function Filters({ onClickItem, items }) {
           items.map((neme, index) => (
             <li
               key={shortId.generate()}
-              onClick={() => onSelectCategory(index)}
+              onClick={() => onClickItem(index)}
               className={
-                category === index
+                activeCategory === index
                   ? [s.btn, s.activeBtnFilter].join(' ')
                   : s.btn
               }>
@@ -39,5 +39,15 @@ const Filters = React.memo(function Filters({ onClickItem, items }) {
     </div>
   );
 });
+
+Filters.propTypes = {
+  activeCategory: PropTypes.number,
+  onClickItem: PropTypes.func.isRequired,
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+Filters.defaultProps = {
+  items: [],
+  activeCategory: null,
+};
 
 export default Filters;

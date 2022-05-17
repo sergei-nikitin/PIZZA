@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import shortId from 'shortid';
 
-import s from '../scss/PizzaCart.module.scss';
-import plus from '../images/plus.svg';
-import plusOrange from '../images/plusOrange.svg';
+import s from '../../scss/PizzaCart.module.scss';
+import plus from '../../images/plus.svg';
+import plusOrange from '../../images/plusOrange.svg';
+import { PlaceholderPizzaCart } from './PlaceholderPizzaCart';
 
 export const PizzaCart = ({
   id,
@@ -16,15 +17,18 @@ export const PizzaCart = ({
   price,
   category,
   rating,
+  isLoading,
 }) => {
-  // const  = props;
-
   const availableTypes = ['тонкое', 'традиционное'];
   const availableSizes = [26, 30, 40];
 
   const [added, setAdded] = useState(true);
   const [activeType, setActiveType] = useState(types[0]);
   const [activeSize, setActiveSize] = useState(0);
+
+  if (isLoading) {
+    return <PlaceholderPizzaCart />;
+  }
 
   const onSelectType = (index) => {
     setActiveType(index);
@@ -83,6 +87,7 @@ PizzaCart.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   types: PropTypes.arrayOf(PropTypes.number).isRequired,
   sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+  isLoading: PropTypes.bool,
 };
 PizzaCart.defaultProps = {
   types: [],
@@ -91,4 +96,5 @@ PizzaCart.defaultProps = {
   price: null,
   imageUrl:
     'https://previews.123rf.com/images/canbedone/canbedone1812/canbedone181200123/126938162-pizza-slice-cartoon-funny-sunglasses-rock-isolated-on-white.jpg',
+  isLoading: false,
 };

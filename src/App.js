@@ -1,21 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
 
-import { setPizzas } from './redux/actions/pizzas';
+// import { useDispatch } from 'react-redux';
+
 import { Header, Footer } from './components';
 import { Home } from './pages/Home';
 import { Cart } from './pages/Cart';
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    axios
-      .get('http://localhost:3001/pizzas')
-      .then(({ data }) => dispatch(setPizzas(data)));
-  }, []);
+  // const dispatch = useDispatch();
 
   return (
     <BrowserRouter>
