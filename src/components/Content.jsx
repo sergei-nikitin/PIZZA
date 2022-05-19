@@ -6,9 +6,16 @@ import { PizzaCart } from './pizzaCart';
 import { PlaceholderPizzaCart } from './pizzaCart/PlaceholderPizzaCart';
 import s from '../scss/Content.module.scss';
 
+import { addPizzaToCart } from '../redux/actions/cart';
+
 const Content = ({ items }) => {
   const dispatch = useDispatch();
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
+  const cartItems = useSelector(({ cart }) => cart.items);
+
+  const handleAddPizzaToCart = (obj) => {
+    dispatch(addPizzaToCart(obj));
+  };
 
   return (
     <div className={s.wrapper}>
@@ -18,7 +25,11 @@ const Content = ({ items }) => {
         {isLoaded
           ? items.map((obj) => (
               <li key={shortId.generate()} className={s.item}>
-                <PizzaCart {...obj} />
+                <PizzaCart
+                  addedCount={cartItems[obj.id] && cartItems[obj.id].length}
+                  onClickAddPizza={handleAddPizzaToCart}
+                  {...obj}
+                />
               </li>
             ))
           : Array(10)

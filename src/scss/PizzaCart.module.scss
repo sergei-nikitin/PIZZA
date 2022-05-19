@@ -87,8 +87,8 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  background: $orange;
-  color: #fff;
+  background: #fff;
+  color: $orange;
   font-size: 16px;
   line-height: 20px;
   font-weight: 700;
@@ -101,29 +101,40 @@
     padding: 10px;
   }
 
-  &:hover {
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  .plus {
+    margin-right: 10px;
+    transition: all 0.3s;
   }
-}
-.activeAddBtn {
-  background: #fff;
-  border: 2px solid $orange;
-  color: $orange;
-}
-.plus {
-  margin-right: 10px;
-}
-.count {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  margin-left: 10px;
-  border-radius: 50%;
-  background: $orange;
-  text-align: center;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
+
+  .count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-left: 10px;
+    border-radius: 50%;
+    background: $orange;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  &:hover {
+    background: $orange;
+    color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+
+    svg path {
+      transition: all 0.3s;
+      fill: #fff;
+    }
+
+    .count {
+      transition: all 0.3s;
+      background: #fff;
+      color: $orange;
+    }
+  }
 }

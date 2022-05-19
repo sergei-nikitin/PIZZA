@@ -23,8 +23,10 @@ const sortItems = [
 export const Home = () => {
   const dispatch = useDispatch();
   const items = useSelector(({ pizzas }) => pizzas.items);
+
   const { category, sortBy } = useSelector(({ filters }) => filters);
-  console.log(sortBy);
+
+  // console.log(cartItems);
 
   React.useEffect(() => {
     dispatch(fetchPizzas(sortBy, category));

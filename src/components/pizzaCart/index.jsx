@@ -4,25 +4,25 @@ import classNames from 'classnames';
 import shortId from 'shortid';
 
 import s from '../../scss/PizzaCart.module.scss';
-import plus from '../../images/plus.svg';
-import plusOrange from '../../images/plusOrange.svg';
 import { PlaceholderPizzaCart } from './PlaceholderPizzaCart';
 
 export const PizzaCart = ({
   id,
   imageUrl,
   name,
+  price,
   types,
   sizes,
-  price,
   category,
   rating,
   isLoading,
+  onClickAddPizza,
+  addedCount,
 }) => {
   const availableTypes = ['тонкое', 'традиционное'];
   const availableSizes = [26, 30, 40];
 
-  const [added, setAdded] = useState(true);
+  // const [added, setAdded] = useState(true);
   const [activeType, setActiveType] = useState(types[0]);
   const [activeSize, setActiveSize] = useState(0);
 
@@ -35,6 +35,18 @@ export const PizzaCart = ({
   };
   const onSelectSize = (index) => {
     setActiveSize(index);
+  };
+  const onAddPizza = () => {
+    const obj = {
+      id,
+      imageUrl,
+      name,
+      type: availableTypes[activeType],
+      size: availableSizes[activeSize],
+      category,
+      price,
+    };
+    onClickAddPizza(obj);
   };
 
   return (
@@ -71,10 +83,20 @@ export const PizzaCart = ({
       </div>
       <div className={s.lastBlock}>
         <p className={s.price}>{price} ₴</p>
-        <button className={[s.addBtn, s.activeAddBtn].join(' ')} type="button">
-          <img className={s.plus} src={added ? plusOrange : plus} alt="plus" />
+        <button onClick={onAddPizza} className={s.addBtn} type="button">
+          <svg
+            className={s.plus}
+            width="12"
+            height="12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10.8 4.8H7.2V1.2a1.2 1.2 0 0 0-2.4 0v3.6H1.2a1.2 1.2 0 0 0 0 2.4h3.6v3.6a1.2 1.2 0 0 0 2.4 0V7.2h3.6a1.2 1.2 0 0 0 0-2.4Z"
+              fill="#EB5A1E"
+            />
+          </svg>
           Добавить
-          <span className={s.count}>3</span>
+          {addedCount && <span className={s.count}>{addedCount}</span>}
         </button>
       </div>
     </div>
@@ -88,6 +110,8 @@ PizzaCart.propTypes = {
   types: PropTypes.arrayOf(PropTypes.number).isRequired,
   sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
   isLoading: PropTypes.bool,
+  onClickAddPizza: PropTypes.func,
+  addedCount: PropTypes.number,
 };
 PizzaCart.defaultProps = {
   types: [],
