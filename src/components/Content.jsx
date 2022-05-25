@@ -26,7 +26,9 @@ const Content = ({ items }) => {
           ? items.map((obj) => (
               <li key={shortId.generate()} className={s.item}>
                 <PizzaCart
-                  addedCount={cartItems[obj.id] && cartItems[obj.id].length}
+                  addedCount={
+                    cartItems[obj.id] && cartItems[obj.id].items.length
+                  }
                   onClickAddPizza={handleAddPizzaToCart}
                   {...obj}
                 />

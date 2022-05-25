@@ -8,35 +8,60 @@ import img from '../images/emptyCart.png';
 import cart from '../images/cartBig.svg';
 import back from '../images/back.svg';
 import del from '../images/del.svg';
+import { useSelector, useDispatch } from 'react-redux';
+import { clearCart } from '../redux/actions/cart';
 
 export const Cart = () => {
-  const [items, setItems] = useState(null);
+  const dispatch = useDispatch();
+  const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart);
+  console.log(items);
+
+  const addedPizzas = Object.keys(items).map((key) => {
+    return items[key].items[0];
+  });
+
+  const onClearCart = () => {
+    if (window.confirm('Are you sure you want to empty the trash?')) {
+      dispatch(clearCart());
+    }
+  };
+
   return (
     <>
-      {items ? (
+      {totalCount ? (
         <div className={s.cartWrapper}>
           <div className={s.upperBlock}>
             <h1 className={s.title}>
               <img src={cart} alt={img} />
               Cart
             </h1>
-            <p className={s.text}>
+            <p className={s.text} onClick={onClearCart}>
               <img src={del} alt="img" />
               clear shopping cart
             </p>
           </div>
           <ul className={s.list}>
-            <li key={shortId.generate()}>
-              <CartItem />
-            </li>
+            {addedPizzas.map((obj) => (
+              <li key={shortId.generate()}>
+                <CartItem
+                  name={obj.name}
+                  type={obj.type}
+                  size={obj.size}
+                  price={obj.price}
+                  totalPrice={items[obj.id].totalPrice}
+                  totalCount={items[obj.id].items.length}
+                  imageUrl={obj.imageUrl}
+                />
+              </li>
+            ))}
           </ul>
           <biv className={s.lowerBlock}>
             <div className={s.info}>
               <p className={s.count}>
-                Total pizzas: <span>3 pcs</span>
+                Total pizzas: <span>{totalCount} pcs</span>
               </p>
               <p className={s.price}>
-                Order price: <span className={s.spanPrice}>777 ₴</span>
+                Order price: <span className={s.spanPrice}>{totalPrice} ₴</span>
               </p>
             </div>
             <div className={s.btns}>
