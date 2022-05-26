@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/PIZZA/static/css/main.297731d8.css",
+    "main.js": "/PIZZA/static/js/main.f96fd3e0.js",
+    "static/media/ProximaNova-Regular.eot": "/PIZZA/static/media/ProximaNova-Regular.d97f8f32c098b28c3ab0.eot",
+    "static/media/ProximaNova-Regular.ttf": "/PIZZA/static/media/ProximaNova-Regular.b078618b41b9b6629ea0.ttf",
+    "static/media/ProximaNova-Bold.eot": "/PIZZA/static/media/ProximaNova-Bold.787088b281e017f8c449.eot",
+    "static/media/ProximaNova-Extrabld.eot": "/PIZZA/static/media/ProximaNova-Extrabld.b9fcd9fbe4d0b5e73cbd.eot",
+    "static/media/ProximaNova-Bold.ttf": "/PIZZA/static/media/ProximaNova-Bold.7722451a8c88b6100185.ttf",
+    "static/media/ProximaNova-Extrabld.ttf": "/PIZZA/static/media/ProximaNova-Extrabld.026a945d32b05c6c8710.ttf",
+    "static/media/ProximaNova-Black.eot": "/PIZZA/static/media/ProximaNova-Black.9a114cea74aac9cc06cc.eot",
+    "static/media/ProximaNova-Black.ttf": "/PIZZA/static/media/ProximaNova-Black.5335144c30bdc79a2d6d.ttf",
+    "static/media/logo.svg": "/PIZZA/static/media/logo.59bd2e5be6323357829945bca855af6e.svg",
+    "static/media/ProximaNova-Regular.woff": "/PIZZA/static/media/ProximaNova-Regular.99528640efded3e12591.woff",
+    "static/media/ProximaNova-Bold.woff": "/PIZZA/static/media/ProximaNova-Bold.1f267da183b3d4fe3d5b.woff",
+    "static/media/ProximaNova-Extrabld.woff": "/PIZZA/static/media/ProximaNova-Extrabld.64f095e95e4018946cb1.woff",
+    "static/media/ProximaNova-Black.woff": "/PIZZA/static/media/ProximaNova-Black.131eab64b8a971a4fc73.woff",
+    "static/media/emptyCart.png": "/PIZZA/static/media/emptyCart.3e6dbdbd60e0277d5e16.png",
+    "index.html": "/PIZZA/index.html",
+    "static/media/cartBig.svg": "/PIZZA/static/media/cartBig.05c509bb196d64cf668bfc9c966f0bdb.svg",
+    "static/media/cart.svg": "/PIZZA/static/media/cart.81fa144b037d82520f4a4183aa366087.svg",
+    "static/media/clear.svg": "/PIZZA/static/media/clear.0d9ff30fc518874572c928cead375e25.svg",
+    "static/media/del.svg": "/PIZZA/static/media/del.7b6ef7b85025b6f197af9553b2750a71.svg",
+    "static/media/plusBig.svg": "/PIZZA/static/media/plusBig.ec0dac0b60639dd1cb4f1edddc50d806.svg",
+    "static/media/arrowSortBlack.svg": "/PIZZA/static/media/arrowSortBlack.c5353789db1d42ea0817bbf39b5f76aa.svg",
+    "static/media/minus.svg": "/PIZZA/static/media/minus.f2acc2c485b0eb61a5a8d88bafb063ad.svg",
+    "static/media/back.svg": "/PIZZA/static/media/back.cf7504301eff997e395bf67a78816c13.svg",
+    "main.297731d8.css.map": "/PIZZA/static/css/main.297731d8.css.map",
+    "main.f96fd3e0.js.map": "/PIZZA/static/js/main.f96fd3e0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.297731d8.css",
+    "static/js/main.f96fd3e0.js"
+  ]
+}
