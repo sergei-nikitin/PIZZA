@@ -9,12 +9,16 @@ import cart from '../images/cartBig.svg';
 import back from '../images/back.svg';
 import del from '../images/del.svg';
 import { useSelector, useDispatch } from 'react-redux';
-import { clearCart } from '../redux/actions/cart';
+import {
+  clearCart,
+  removeCartItem,
+  plusCartItem,
+  minusCartItem,
+} from '../redux/actions/cart';
 
 export const Cart = () => {
   const dispatch = useDispatch();
   const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart);
-  console.log(items);
 
   const addedPizzas = Object.keys(items).map((key) => {
     return items[key].items[0];
@@ -24,6 +28,16 @@ export const Cart = () => {
     if (window.confirm('Are you sure you want to empty the trash?')) {
       dispatch(clearCart());
     }
+  };
+
+  const onRemoveCartItem = (id) => {
+    dispatch(removeCartItem(id));
+  };
+  const onPlusCartItem = (id) => {
+    dispatch(plusCartItem(id));
+  };
+  const onMinusCartItem = (id) => {
+    dispatch(minusCartItem(id));
   };
 
   return (
@@ -44,6 +58,7 @@ export const Cart = () => {
             {addedPizzas.map((obj) => (
               <li key={shortId.generate()}>
                 <CartItem
+                  id={obj.id}
                   name={obj.name}
                   type={obj.type}
                   size={obj.size}
@@ -51,11 +66,14 @@ export const Cart = () => {
                   totalPrice={items[obj.id].totalPrice}
                   totalCount={items[obj.id].items.length}
                   imageUrl={obj.imageUrl}
+                  removeItem={onRemoveCartItem}
+                  plusItem={onPlusCartItem}
+                  minusItem={onMinusCartItem}
                 />
               </li>
             ))}
           </ul>
-          <biv className={s.lowerBlock}>
+          <div className={s.lowerBlock}>
             <div className={s.info}>
               <p className={s.count}>
                 Total pizzas: <span>{totalCount} pcs</span>
@@ -71,7 +89,7 @@ export const Cart = () => {
               </Link>
               <button type="button">Send order</button>
             </div>
-          </biv>
+          </div>
         </div>
       ) : (
         <EmptyCart />

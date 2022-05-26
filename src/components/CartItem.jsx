@@ -6,6 +6,7 @@ import plus from '../images/plusBig.svg';
 import clear from '../images/clear.svg';
 
 const CartItem = ({
+  id,
   name,
   type,
   price,
@@ -13,7 +14,20 @@ const CartItem = ({
   imageUrl,
   totalPrice,
   totalCount,
+  removeItem,
+  plusItem,
+  minusItem,
 }) => {
+  const handleRemoveClick = () => {
+    removeItem(id);
+  };
+  const handlePlusItemClick = () => {
+    plusItem(id);
+  };
+  const handleMinusItemClick = () => {
+    minusItem(id);
+  };
+
   return (
     <div className={s.wrapper}>
       <div className={s.descrBlock}>
@@ -26,17 +40,17 @@ const CartItem = ({
         </div>
       </div>
       <div className={s.countBlock}>
-        <button className={s.btn} type="button">
+        <button onClick={handleMinusItemClick} className={s.btn} type="button">
           <img src={minus} alt="img" />
         </button>
         <span>{totalCount}</span>
-        <button className={s.btn} type="button">
+        <button onClick={handlePlusItemClick} className={s.btn} type="button">
           <img src={plus} alt="img" />
         </button>
       </div>
       <div className={s.priceBlock}>
         <p>{totalPrice} ₴</p>
-        <button type="button">
+        <button onClick={handleRemoveClick} type="button">
           <img src={clear} alt="img" />
         </button>
       </div>
